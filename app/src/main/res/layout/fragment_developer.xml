@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto" tools:context="com.terminalbit.hotmoney.Developer" >
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratio"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/balance"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:editable="true"
+        android:enabled="true"
+        android:hint="New Balance" />
+</FrameLayout>

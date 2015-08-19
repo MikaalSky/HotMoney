@@ -58,6 +58,11 @@
             android:checked="false"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="@string/settings_string" />
+        <item
+            android:id="@+id/developer"
+            android:checked="false"
+            android:icon="@drawable/ic_bug_report_black_24dp"
+            android:title="@string/developer_string" />
 
     </group>
 </menu>

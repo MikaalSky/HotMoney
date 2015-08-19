@@ -2,11 +2,13 @@ package com.terminalbit.hotmoney;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -17,10 +19,11 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+    Balance balance = new Balance(); //lol new balance
+    Developer dev = new Developer();
     private void moveToFragment(Fragment freg) {
-        Fragment frag = freg;
-        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame,frag);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame, freg);
         fragmentTransaction.commit();
     }
     @Override
@@ -56,13 +59,16 @@ public class MainActivity extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.balance:
-                        Toast.makeText(getApplicationContext(), "Inbox Selected", Toast.LENGTH_SHORT).show();
-                        moveToFragment(new Balance());
+                        //Toast.makeText(getApplicationContext(), "Balance Selected", Toast.LENGTH_SHORT).show();
+                        moveToFragment(balance);
+                        return true;
+                    case R.id.developer:
+                        //Toast.makeText(getApplicationContext(), "Developer Selected", Toast.LENGTH_SHORT).show();
+                        moveToFragment(dev);
                         return true;
                     default:
-                        Toast.makeText(getApplicationContext(), "Somethings Wrong", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "Somethings Wrong", Toast.LENGTH_SHORT).show();
                         return true;
-
                 }
             }
         });
