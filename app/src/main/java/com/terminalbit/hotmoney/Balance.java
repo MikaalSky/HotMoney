@@ -1,6 +1,7 @@
 package com.terminalbit.hotmoney;
 
 import android.app.Activity;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -25,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Random;
 
 import at.grabner.circleprogress.CircleProgressView;
@@ -40,22 +42,30 @@ import at.grabner.circleprogress.CircleProgressView;
  */
 public class Balance extends Fragment {
     public int balance;
+    File appDirectory;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_balance,container,false);
         CircleProgressView Circle = (CircleProgressView) v.findViewById(R.id.fills);
+        appDirectory = getActivity().getApplicationContext().getFilesDir();
         //int Moneys = generator.nextInt(balance + 1);
         int Moneys;
-        //try {
-            //Moneys = readJSON("data.json").getInt("hotmoney_count");
-            //balance = readJSON("data.json").getInt("total_balance");
-        //}catch(JSONException e){
+        try {
+            Moneys = readJSON("data.json").getInt("hotmoney_count");
+            balance = readJSON("data.json").getInt("total_balance");
+            Log.i("It's a-okay in json land", Moneys + " | " + balance);
+        }catch(JSONException e){
             Moneys = 0;
             balance = 0;
-        //}
+            Log.i("note","Failed to get the stuff. :(");
+            e.printStackTrace();
+        }
         Circle.setValue(Moneys);
         int Temperature = (int) (((((double)Moneys)/((double)balance))*(212-32)) + 32);
+        if(Temperature == 0){
+            Temperature = 32;
+        }
         Circle.setText(Temperature + "°");
         //212 to 32
         Circle.setMaxValue((float) balance);
@@ -73,8 +83,6 @@ public class Balance extends Fragment {
         super.onDestroy();
         Log.i("[destroy]", "got destroy");
     }
-
-    File appDirectory = Environment.getDataDirectory();
     public JSONObject readJSON(String filename){
         File jsonFile = new File(appDirectory, filename);
         StringBuilder jsonTxt = new StringBuilder();
@@ -88,11 +96,36 @@ public class Balance extends Fragment {
             br.close();
         }catch(IOException e){
             //handle errors :)
-            return gson.fromJson("{}",JSONObject.class);
+            e.printStackTrace();
+            Log.i("info", "WOAH, THE FILE's DEAD! Let's make a file. :P");
+            String example = "{\"hotmoney_count\":0,\"total_balance\":0}";
+            writeJSON("data.json",example);
+            return gson.fromJson(example,JSONObject.class);
         }
         String jsonText = jsonTxt.toString();
-        JSONObject test = gson.fromJson(jsonText, JSONObject.class);
-        jsonFile.deleteOnExit();
+        //Log.i("ghf",jsonText);
+        JSONObject test = null;
+        try {
+            test = new JSONObject(jsonText);
+        }catch(Exception e) {
+            try {
+                test = new JSONObject("{}");
+            }catch(Exception E){}
+        }
         return test;
+    }
+    public boolean writeJSON(String filename,String data){
+        File writeing = new File(appDirectory, filename);
+        FileOutputStream output;
+        try{
+            output = getActivity().getApplicationContext().openFileOutput(filename, Context.MODE_PRIVATE);
+            output.write(data.getBytes());
+            output.close();
+            Log.i("info","We did it, party! Wrote to le file!!!1!");
+        }catch(Exception e){
+            Log.i("info","WTF! Failed to write?!");
+            return false;
+        }
+        return true;
     }
 }
