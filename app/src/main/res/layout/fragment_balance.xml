@@ -1,0 +1,18 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto" tools:context="com.terminalbit.hotmoney.Balance" >
+
+    <at.grabner.circleprogress.CircleProgressView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/fills"
+        CircleProgressView:contourSize="0dp"
+        CircleProgressView:rimWidth="10dp"
+        CircleProgressView:rimColor="#FFE082"
+        CircleProgressView:barWidth="10dp"
+        CircleProgressView:barColor="#FF6F00"
+        CircleProgressView:showUnit="false"
+        CircleProgressView:text=" "
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="20dp" />
+</FrameLayout>
