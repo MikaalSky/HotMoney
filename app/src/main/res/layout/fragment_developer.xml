@@ -19,4 +19,26 @@
         android:editable="true"
         android:enabled="true"
         android:hint="New Balance" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:text="Balance: n/a | Hot: n/a"
+        android:id="@+id/stats"
+        android:layout_gravity="center"
+        android:hint="wut u do"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="30dp"
+        android:textStyle="normal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Data"
+        android:id="@+id/saver"
+        android:layout_gravity="center"
+        android:layout_marginTop="85dp" />
 </FrameLayout>

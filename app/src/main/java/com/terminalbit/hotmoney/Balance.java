@@ -18,6 +18,7 @@ import com.google.gson.JsonParser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.Console;
@@ -26,7 +27,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Random;
 
 import at.grabner.circleprogress.CircleProgressView;
@@ -48,6 +51,9 @@ public class Balance extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_balance,container,false);
         CircleProgressView Circle = (CircleProgressView) v.findViewById(R.id.fills);
+        TextView totalMoneys = (TextView) v.findViewById(R.id.totalMoney);
+        TextView hotMoneys = (TextView) v.findViewById(R.id.hotMoney);
+        TextView staleMoneys = (TextView) v.findViewById(R.id.staleMoney);
         appDirectory = getActivity().getApplicationContext().getFilesDir();
         //int Moneys = generator.nextInt(balance + 1);
         int Moneys;
@@ -69,9 +75,14 @@ public class Balance extends Fragment {
         Circle.setText(Temperature + "°");
         //212 to 32
         Circle.setMaxValue((float) balance);
+        totalMoneys.setText(formatNumber(balance) + " Moneys");
+        hotMoneys.setText(formatNumber(Moneys) + " Moneys");
+        staleMoneys.setText(formatNumber(balance-Moneys) + " Moneys");
         return v;
     }
-
+    public String formatNumber(int num){
+        return NumberFormat.getNumberInstance(Locale.US).format(num);
+    }
     @Override
     public void onDetach() {
         super.onDetach();

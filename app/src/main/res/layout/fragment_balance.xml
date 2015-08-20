@@ -14,5 +14,74 @@
         CircleProgressView:showUnit="false"
         CircleProgressView:text=" "
         android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Wallet Temperature"
+        android:id="@+id/tempCaption"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Total Balance"
+        android:id="@+id/totalHeader"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Some Moneys"
+        android:id="@+id/totalMoney"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Hot Moneys"
+        android:id="@+id/hotHeader"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Some Moneys"
+        android:id="@+id/hotMoney"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Stale Moneys"
+        android:id="@+id/staleHeader"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="140dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Some Moneys"
+        android:id="@+id/staleMoney"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="30dp" />
+
 </FrameLayout>

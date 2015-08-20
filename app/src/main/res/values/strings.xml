@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Hot Money</string>
     <string name="balance_string">Balance</string>
-    <string name="help_string">Support</string>
+    <string name="help_string">Help</string>
     <string name="settings_string">Settings</string>
     <string name="empty"></string>
     <string name="hello_blank_fragment">fSADFSADAF</string>
     <string name="developer_string">Developer Tools</string>
+    <string name="stats_string">Statistics</string>
+    <string name="buy_string">Convert to Moneys</string>
+    <string name="account_string">Account Management</string>
 </resources>
